@@ -319,6 +319,6 @@ Some of the criticisms of AOP are :
 * Difficult to Debug / test if not fully understood
 * Can easily introduce bugs across the system, if not judiciously deployed
 
-Like any prudent technologist, you should consider all the pros & cons of AOP, expertise at hann and the requirements before making a decision.
+Like any prudent technologist, you should consider all the pros & cons of AOP, consider your expertise available and the requirements before making a decision.
 
 Good Luck and thanks for taking your time to read this!
