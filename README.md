@@ -72,6 +72,8 @@ Start a new Console App Project with the .NET Framework of your choice (Standard
 
 Grab the following NuGet Packages:
 
+![Dependencies](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/blob/master/AOPLogging/Pics/AOPLoggingDirectory.PNG "Dependencies")
+
 The CLI way:
 
 ```
@@ -249,28 +251,24 @@ namespace AOPLogging
 
 If you run the project, you will see a Console Window with an error message (as expected)
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![Console](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingDependencies.PNG "Console")
 
-Let's see what was logged in our log file.
+Let's see what was logged in our log file. Goto the debug folder
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
-
-If you go into your debug directory, you should see a RateCalculator.[DateStamp].log file.
-
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![LogDirectory](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingDirectory.PNG "LogDirectory")
 
 Let's take a look at the file.
 First of all, you can see it logged the method info + arguments, error log & results correctly for the first 3 tests.
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![File1](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingFile1.PNG "LogFile 1")
 
 Next, you can see the warning logged for the zero rate case.
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![File2](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingFile2.PNG "LogFile 2")
 
 And finally, you can see the warning & error logged for the zero rate and zero day.
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![File3](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingFile3.PNG "LogFile 3")
 
 ### Step 6: Closing Words & Further Reading
 
