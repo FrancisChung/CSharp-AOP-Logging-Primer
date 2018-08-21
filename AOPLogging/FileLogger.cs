@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Serilog;
 using Castle.DynamicProxy;
+using System.Diagnostics;
 
 namespace AOPLogging
 {
@@ -26,21 +27,25 @@ namespace AOPLogging
             logger.Information($"Call: {name}");
             logger.Information($"Args: {args}");
 
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+            var watch = Stopwatch.StartNew();
             try
             {
                 invocation.Proceed();
             }
+
             catch (Exception ex)
             {
                 logger.Error(ex.Message);
                 throw;
             }
             watch.Stop();
-            var executionTime = watch.ElapsedMilliseconds;
+
+            var ticks = (double) watch.ElapsedTicks;    // Can't use ElapsedMilliseconds as it is a long and our tests execute too fast for it not to be zero
+            double milliseconds = (ticks / Stopwatch.Frequency) * 1000;
+
 
             logger.Information($"Done: result was {invocation.ReturnValue}");
-            logger.Debug($"Execution Time: {executionTime} ms.");
+            logger.Debug($"Execution Time: {milliseconds} ms");
         }
     }
 }
