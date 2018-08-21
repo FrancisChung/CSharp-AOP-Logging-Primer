@@ -22,8 +22,20 @@ namespace AOPLogging
                 var b = new ContainerBuilder();
 
                 // Logger Setup
+
                 Log.Logger = new LoggerConfiguration()
-                    .WriteTo.RollingFile("RateCalculator.log").CreateLogger();
+                    .WriteTo.RollingFile("RateCalculator.log")
+                    .CreateLogger();
+
+
+                /** DebugLevel Logging Enabled 
+                 
+                Log.Logger = new LoggerConfiguration()
+                    .WriteTo.RollingFile("RateCalculator.log")
+                    .MinimumLevel.Debug()
+                    .CreateLogger();
+                **/
+
                 b.RegisterLogger();
                 b.RegisterType<FileLogger>();
 
