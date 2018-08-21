@@ -72,7 +72,7 @@ Start a new Console App Project with the .NET Framework of your choice (Standard
 
 Grab the following NuGet Packages:
 
-![Dependencies](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/blob/master/AOPLogging/Pics/AOPLoggingDirectory.PNG "Dependencies")
+![Dependencies](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/blob/master/AOPLogging/Pics/AOPLoggingDependencies.PNG "Dependencies")
 
 The CLI way:
 
@@ -251,7 +251,7 @@ namespace AOPLogging
 
 If you run the project, you will see a Console Window with an error message (as expected)
 
-![Console](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingDependencies.PNG "Console")
+![Console](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingResult.PNG "Console")
 
 Let's see what was logged in our log file. Goto the debug folder
 
