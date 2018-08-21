@@ -128,6 +128,7 @@ In the file logger below, I have added code to:
 ```c#
 using Serilog;
 using Castle.DynamicProxy;
+using System.Diagnostics;
 
 namespace AOPLogging
 {
@@ -148,21 +149,25 @@ namespace AOPLogging
             logger.Information($"Call: {name}");
             logger.Information($"Args: {args}");
 
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+            var watch = Stopwatch.StartNew();
             try
             {
                 invocation.Proceed();
             }
+
             catch (Exception ex)
             {
                 logger.Error(ex.Message);
                 throw;
             }
             watch.Stop();
-            var executionTime = watch.ElapsedMilliseconds;
+
+            var ticks = (double) watch.ElapsedTicks;
+            double milliseconds = (ticks / Stopwatch.Frequency) * 1000;
+
 
             logger.Information($"Done: result was {invocation.ReturnValue}");
-            logger.Debug($"Execution Time: {executionTime} ms.");
+            logger.Debug($"Execution Time: {milliseconds} ms");
         }
     }
 }
@@ -258,7 +263,7 @@ Let's see what was logged in our log file. Goto the debug folder
 ![LogDirectory](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingDirectory.PNG "LogDirectory")
 
 Let's take a look at the file.
-First of all, you can see it logged the method info + arguments, error log & results correctly for the first 3 tests.
+First of all, you can see it logged the method name, its arguments & results correctly for the first 3 tests.
 
 ![File1](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingFile1.PNG "LogFile 1")
 
@@ -270,7 +275,40 @@ And finally, you can see the warning & error logged for the zero rate and zero d
 
 ![File3](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingFile3.PNG "LogFile 3")
 
-### Step 6: Closing Words & Further Reading
+### Step 6 : Bonus Round
+
+Imagine a scenario where you had to get some performance statistics to do track down a bottleneck within your system.
+Recall that in the FileLogger class, we added some code to measure how long the method took to execute
+
+```c#
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            try
+            {
+                invocation.Proceed();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                throw;
+            }
+            watch.Stop();
+            var executionTime = watch.ElapsedMilliseconds;
+```
+We can easily turn this on by setting debug level of the logger to "Debug" in main().
+
+```c#
+                Log.Logger = new LoggerConfiguration()
+                    .WriteTo.RollingFile("RateCalculator.log")
+                    .MinimumLevel.Debug()
+                    .CreateLogger();
+```
+
+You should see the executing times being logged in the log file 
+
+![DebugLevel](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingDebugLevel.PNG "DebugLevel")
+
+
+### Step 7: Closing Words & Further Reading
 
 I hope this was a straight forward introduction to using AOP for Logging and other possibilities to reduce code
 
