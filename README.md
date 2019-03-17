@@ -15,8 +15,11 @@ Basic understanding of what Aspect Orientated Programming (AOP) is and a basic w
 If you need to brush up on it, here are some links to get you going: 
 
 [AOP Wikipedia](https://www.wikiwand.com/en/Aspect-oriented_programming)
+
 [What is AOP?](https://stackoverflow.com/questions/242177/what-is-aspect-oriented-programming)
+
 [AutoFac Getting Started](https://autofac.readthedocs.io/en/latest/getting-started/index.html)
+
 [Serilog Tutorial](https://blog.getseq.net/serilog-tutorial/) 
 
 
