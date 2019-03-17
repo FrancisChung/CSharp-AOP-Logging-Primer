@@ -311,7 +311,7 @@ You should see the executing times being logged in the log file
 ![DebugLevel](https://github.com/FrancisChung/CSharp-AOP-Logging-Primer/raw/master/AOPLogging/Pics/AOPLoggingDebugLevel.PNG "DebugLevel")
 
 
-### Step 7: Closing Words & Further Reading
+### Step 7: Closing Words
 
 I hope this was a straight forward introduction to using AOP for Logging and other possibilities to reduce code
 
